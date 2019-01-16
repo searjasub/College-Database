@@ -43,19 +43,28 @@ public class CollegeDatabase {
                 userInteraction.printDatabase(database);
                 break;
             case 1:
-                //TODO GET ONLY STUDENTS
-                //ArrayList<Student> studentsDatabase;
                 for (CollegePerson s : database) {
                     if(s instanceof Student){
                         userInteraction.print(s.toString());
                     }
-
                 }
-
+                userInteraction.println("\n");
                 break;
             case 2:
+                for (CollegePerson s : database) {
+                    if(s instanceof FacultyMember){
+                        userInteraction.print(s.toString());
+                    }
+                }
+                userInteraction.println("\n");
                 break;
             case 3:
+                for (CollegePerson s : database) {
+                    if(s instanceof StaffMember){
+                        userInteraction.print(s.toString());
+                    }
+                }
+                userInteraction.println("\n");
                 break;
             default:
                 break;
@@ -137,7 +146,7 @@ public class CollegeDatabase {
 //        userInteraction.println(facultyMember1.speak());
 //        userInteraction.println(student1.speak());
 //        userInteraction.println(staffMember1.speak());
-        
+
         student1.compareTo(student2);
         if (staffMember1.compareTo(facultyMember1) < 0) {
             System.out.println("staff is bigger");

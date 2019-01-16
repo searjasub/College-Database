@@ -180,7 +180,10 @@ public class UserInteraction {
     }
 
     public void printDatabase(ArrayList<CollegePerson> database) {
-        System.out.println(database);
+        for (CollegePerson collegePerson: database) {
+            print(collegePerson.toString());
+        }
+        System.out.println("\n");
     }
 
     public void println(String message) {
