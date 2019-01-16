@@ -179,11 +179,29 @@ public class UserInteraction {
         return menuOptions;
     }
 
-    public void print(ArrayList<CollegePerson> database) {
+    public void printDatabase(ArrayList<CollegePerson> database) {
         System.out.println(database);
     }
 
     public void println(String message) {
         System.out.println(message);
+    }
+
+    public void print(String message){
+        System.out.print(message);
+    }
+
+    public int viewMenu() throws IOException {
+        String[] menuOptions = new String[4];
+        menuOptions[0] = "View All";
+        menuOptions[1] = "View Students";
+        menuOptions[2] = "View Faculty Members";
+        menuOptions[3] = "View Staff Members";
+
+        return ConsoleUI.promptForMenuSelection(menuOptions, "Choose your desire view");
+    }
+
+    public int removeCollegePerson() throws IOException {
+        return ConsoleUI.promptForInt("Enter the id", 0, Integer.MAX_VALUE);
     }
 }

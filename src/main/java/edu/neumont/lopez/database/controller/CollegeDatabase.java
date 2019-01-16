@@ -25,7 +25,7 @@ public class CollegeDatabase {
                     removeCollagePerson();
                     break;
                 case 2:
-                    userInteraction.print(database);
+                    viewDatabase();
                     break;
                 case 3:
                     keepAdding = false;
@@ -34,6 +34,33 @@ public class CollegeDatabase {
                     break;
             }
         }
+    }
+
+    private void viewDatabase() throws IOException {
+        int selection = userInteraction.viewMenu();
+        switch (selection) {
+            case 0:
+                userInteraction.printDatabase(database);
+                break;
+            case 1:
+                //TODO GET ONLY STUDENTS
+                //ArrayList<Student> studentsDatabase;
+                for (CollegePerson s : database) {
+                    if(s instanceof Student){
+                        userInteraction.print(s.toString());
+                    }
+
+                }
+
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+
     }
 
     private void addCollegePerson() throws IOException {
@@ -78,32 +105,47 @@ public class CollegeDatabase {
     }
 
 
-    private void removeCollagePerson() {
-        //TODO How to remove people (ID's)
+    private void removeCollagePerson() throws IOException {
+        userInteraction.println("To remove someone from the database we'll recommend you know the ID, you can check it by printing the database ");
+        int id = userInteraction.removeCollegePerson();
+        database.remove(id);
+        for (int i = id; i < database.size(); i++) {
+            database.get(i).setId(i);
+        }
     }
 
     private void preFillDatabase() {
         Student student1 = new Student("Sear", "Lopez", 0, 4, 10, 1994, 4.0);
         Student student2 = new Student("Kellee", "Lopez", 1, 26, 10, 1993, 3.9);
 
-        StaffMember staffMember1 = new StaffMember("John", "P", 2,16, 2, 92, SchoolDepartment.AFFAIRS);
-        StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 3,1, 12, 67, SchoolDepartment.EXECUTIVE);
+        StaffMember staffMember1 = new StaffMember("John", "P", 2, 16, 2, 92, SchoolDepartment.AFFAIRS);
+        StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 3, 1, 12, 67, SchoolDepartment.EXECUTIVE);
 
-        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Cox",4, 5, 3, 87, DegreeProgram.CS);
-        FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 5,17, 9, 80, DegreeProgram.WD);
+        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Pox", 4, 5, 3, 87, DegreeProgram.CS);
+        FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 5, 17, 9, 80, DegreeProgram.WD);
 
         counter = 6;
 
         database.add(student1);
-        database.add(staffMember1);
-        database.add(facultyMember1);
         database.add(student2);
+        database.add(staffMember1);
         database.add(staffMember2);
+        database.add(facultyMember1);
         database.add(facultyMember2);
+
 
 //        userInteraction.println(facultyMember1.speak());
 //        userInteraction.println(student1.speak());
 //        userInteraction.println(staffMember1.speak());
+        
+        student1.compareTo(student2);
+        if (staffMember1.compareTo(facultyMember1) < 0) {
+            System.out.println("staff is bigger");
+        } else if(staffMember1.compareTo(facultyMember1) > 0){
+            System.out.println("faculty is bigger");
+        } else{
+            System.out.println("equals");
+        }
     }
 
 }
