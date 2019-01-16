@@ -27,6 +27,6 @@ public class StaffMember extends CollegePerson{
 
     @Override
     public String toString() {
-        return super.toString() + "School Department: " + getDepartment();
+        return super.toString() + "\nSchool Department: " + getDepartment();
     }
 }

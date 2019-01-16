@@ -5,7 +5,8 @@ public enum DegreeProgram {
     WD("Web Development"),
     GD("Game Development"),
     TM("Technology Management"),
-    IS("Information Systems");
+    IS("Information Systems"),
+    DEFAULT("No degree assigned");
 
     private String name;
 

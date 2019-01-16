@@ -4,7 +4,8 @@ public enum SchoolDepartment {
     AFFAIRS("Student Affairs"),
     ADMISSIONS("Admissions"),
     FINANCE("Finance"),
-    EXECUTIVE("Executive");
+    EXECUTIVE("Executive"),
+    DEFAULT("No degree assigned");
 
     private String name;
 

@@ -2,25 +2,25 @@ package edu.neumont.lopez.database.model;
 
 public class Student extends CollegePerson {
 
-    private int gpa;
+    private double gpa;
 
-    public Student(String name, String lastName, int day, int month, int year, int gpa) {
+    public Student(String name, String lastName, int day, int month, int year, double gpa) {
         super(name, lastName, day, month, year);
         this.setGpa(gpa);
     }
 
-    public int getGpa() {
+    public double getGpa() {
         return gpa;
     }
 
-    public void setGpa(int gpa) {
+    public void setGpa(double gpa) {
         if(gpa < 0){
             throw new IllegalArgumentException("The GPA can't be negative");
         }
         this.gpa = gpa;
     }
 
-    public int compareTo(Student other) {
+    public double compareTo(Student other) {
         return this.getGpa() - other.getGpa();
     }
 

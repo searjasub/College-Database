@@ -2,7 +2,7 @@ package edu.neumont.lopez.database.model;
 
 import java.util.Objects;
 
-public abstract class CollegePerson {
+public class CollegePerson {
 
     private String name;
 
@@ -73,11 +73,11 @@ public abstract class CollegePerson {
     }
 
     public String speak(){
-        return "";
+        return "Speaking from CollegePerson";
     }
 
     public String toString() {
-        return "Name: " + getName() +
+        return "\n\nName: " + getName() +
                 "\nLast name: " + getLastName() +
                 "\nDOB: " + getDay() +
                 "/" + getMonth() +
