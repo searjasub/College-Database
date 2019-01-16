@@ -4,8 +4,8 @@ public class Student extends CollegePerson {
 
     private double gpa;
 
-    public Student(String name, String lastName, int day, int month, int year, double gpa) {
-        super(name, lastName, day, month, year);
+    public Student(String name, String lastName, int id, int day, int month, int year, double gpa) {
+        super(name, lastName, id, day, month, year);
         this.setGpa(gpa);
     }
 
@@ -13,15 +13,11 @@ public class Student extends CollegePerson {
         return gpa;
     }
 
-    public void setGpa(double gpa) {
-        if(gpa < 0){
+    private void setGpa(double gpa) {
+        if (gpa < 0) {
             throw new IllegalArgumentException("The GPA can't be negative");
         }
         this.gpa = gpa;
-    }
-
-    public double compareTo(Student other) {
-        return this.getGpa() - other.getGpa();
     }
 
     @Override
@@ -32,5 +28,11 @@ public class Student extends CollegePerson {
     @Override
     public String toString() {
         return super.toString() + "\nGPA: " + getGpa();
+    }
+
+    @Override
+    public int compareTo(CollegePerson o) {
+        Student other = (Student) o;
+        return Double.compare(this.getGpa(), other.getGpa());
     }
 }

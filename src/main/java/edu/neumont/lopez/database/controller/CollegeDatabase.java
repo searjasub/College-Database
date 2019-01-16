@@ -10,6 +10,7 @@ public class CollegeDatabase {
 
     private ArrayList<CollegePerson> database = new ArrayList<>();
     private UserInteraction userInteraction = new UserInteraction();
+    private int counter = 0;
 
     public void start() throws IOException {
         preFillDatabase();
@@ -33,27 +34,30 @@ public class CollegeDatabase {
                     break;
             }
         }
-
     }
 
     private void addCollegePerson() throws IOException {
         CollegePerson p;
         int selection = userInteraction.secondMenu();
+
         switch (selection) {
             case 0:
                 p = basicInfo();
-                Student student = new Student(p.getName(), p.getLastName(), p.getDay(), p.getMonth(), p.getYear(), userInteraction.getGpa());
+                Student student = new Student(p.getName(), p.getLastName(), p.getId(), p.getDay(), p.getMonth(), p.getYear(), userInteraction.getGpa());
                 database.add(student);
+                counter++;
                 break;
             case 1:
                 p = basicInfo();
-                FacultyMember faculty = new FacultyMember(p.getName(),p.getLastName(),p.getDay(),p.getMonth(),p.getYear(), userInteraction.getDegree());
+                FacultyMember faculty = new FacultyMember(p.getName(), p.getLastName(), p.getId(), p.getDay(), p.getMonth(), p.getYear(), userInteraction.getDegree());
                 database.add(faculty);
+                counter++;
                 break;
             case 2:
                 p = basicInfo();
-                StaffMember staff = new StaffMember(p.getName(),p.getLastName(),p.getDay(),p.getMonth(),p.getYear(), userInteraction.getSchoolDepartment());
+                StaffMember staff = new StaffMember(p.getName(), p.getLastName(), p.getId(), p.getDay(), p.getMonth(), p.getYear(), userInteraction.getSchoolDepartment());
                 database.add(staff);
+                counter++;
                 break;
             case 3:
                 break;
@@ -63,29 +67,32 @@ public class CollegeDatabase {
     }
 
     private CollegePerson basicInfo() throws IOException {
+
         String name = userInteraction.getName();
         String lastName = userInteraction.getLastName();
         int day = userInteraction.getDay();
         int month = userInteraction.getMonth();
         int year = userInteraction.getYear();
 
-        return new CollegePerson(name, lastName, day, month, year);
+        return new CollegePerson(name, lastName, counter, day, month, year);
     }
 
 
     private void removeCollagePerson() {
-        //TODO How to remove people
+        //TODO How to remove people (ID's)
     }
 
     private void preFillDatabase() {
-        Student student1 = new Student("Sear", "Lopez", 4, 10, 1994, 4.0);
-        Student student2 = new Student("Kellee", "Lopez", 26, 10, 1993, 3.9);
+        Student student1 = new Student("Sear", "Lopez", 0, 4, 10, 1994, 4.0);
+        Student student2 = new Student("Kellee", "Lopez", 1, 26, 10, 1993, 3.9);
 
-        StaffMember staffMember1 = new StaffMember("John", "P", 16, 2, 92, SchoolDepartment.AFFAIRS);
-        StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 1, 12, 67, SchoolDepartment.EXECUTIVE);
+        StaffMember staffMember1 = new StaffMember("John", "P", 2,16, 2, 92, SchoolDepartment.AFFAIRS);
+        StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 3,1, 12, 67, SchoolDepartment.EXECUTIVE);
 
-        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Cox", 5, 3, 87, DegreeProgram.CS);
-        FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 17, 9, 80, DegreeProgram.WD);
+        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Cox",4, 5, 3, 87, DegreeProgram.CS);
+        FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 5,17, 9, 80, DegreeProgram.WD);
+
+        counter = 6;
 
         database.add(student1);
         database.add(staffMember1);

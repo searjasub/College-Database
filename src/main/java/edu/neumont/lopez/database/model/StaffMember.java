@@ -1,11 +1,11 @@
 package edu.neumont.lopez.database.model;
 
-public class StaffMember extends CollegePerson{
+public class StaffMember extends CollegePerson {
 
     private SchoolDepartment department;
 
-    public StaffMember(String name, String lastName, int day, int month, int year, SchoolDepartment department) {
-        super(name, lastName, day, month, year);
+    public StaffMember(String name, String lastName, int id, int day, int month, int year, SchoolDepartment department) {
+        super(name, lastName, id, day, month, year);
         this.setDepartment(department);
     }
 
@@ -14,7 +14,7 @@ public class StaffMember extends CollegePerson{
     }
 
     public void setDepartment(SchoolDepartment department) {
-        if(department == null){
+        if (department == null) {
             throw new IllegalArgumentException("department cannot be null");
         }
         this.department = department;

@@ -1,20 +1,20 @@
 package edu.neumont.lopez.database.model;
 
-import java.util.Objects;
-
-public class CollegePerson {
+public class CollegePerson implements Comparable<CollegePerson> {
 
     private String name;
 
 
     private String lastName;
-    private int day, month, year;
+    private int day, month, year, id;
 
-    public CollegePerson(){}
+    public CollegePerson() {
+    }
 
-    public CollegePerson(String name, String lastName, int day, int month, int year) {
+    public CollegePerson(String name, String lastName, int id, int day, int month, int year) {
         this.setName(name);
         this.setLastName(lastName);
+        this.setId(id);
         this.setDay(day);
         this.setMonth(month);
         this.setYear(year);
@@ -37,6 +37,14 @@ public class CollegePerson {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getDay() {
@@ -72,7 +80,7 @@ public class CollegePerson {
         this.year = year;
     }
 
-    public String speak(){
+    public String speak() {
         return "Speaking from CollegePerson";
     }
 
@@ -81,7 +89,8 @@ public class CollegePerson {
                 "\nLast name: " + getLastName() +
                 "\nDOB: " + getDay() +
                 "/" + getMonth() +
-                "/" + getYear();
+                "/" + getYear() +
+                "\nID: " + getId();
     }
 
     public boolean equals(Object obj) {
@@ -89,4 +98,9 @@ public class CollegePerson {
         return this.getName().equalsIgnoreCase(other.getName());
     }
 
+    @Override
+    public int compareTo(CollegePerson o) {
+        return this.getLastName().compareTo(o.getLastName());
+
+    }
 }
