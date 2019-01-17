@@ -6,7 +6,6 @@ import edu.neumont.lopez.database.model.SchoolDepartment;
 import interfaces.ConsoleUI;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserInteraction {
@@ -181,7 +180,7 @@ public class UserInteraction {
     }
 
     public void printDatabase(List<CollegePerson> database) {
-        for (CollegePerson collegePerson: database) {
+        for (CollegePerson collegePerson : database) {
             print(collegePerson.toString());
         }
         System.out.println("\n");
@@ -191,7 +190,7 @@ public class UserInteraction {
         System.out.println(message);
     }
 
-    public void print(String message){
+    public void print(String message) {
         System.out.print(message);
     }
 
@@ -205,7 +204,7 @@ public class UserInteraction {
         return ConsoleUI.promptForMenuSelection(menuOptions, "Choose your desire view");
     }
 
-    public int removeCollegePerson() throws IOException {
-        return ConsoleUI.promptForInt("Enter the id", 0, Integer.MAX_VALUE);
+    public int removeCollegePerson(int maxValue) throws IOException {
+        return ConsoleUI.promptForInt("Enter the id", 0, maxValue);
     }
 }

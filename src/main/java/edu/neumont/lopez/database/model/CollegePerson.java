@@ -35,8 +35,8 @@ public class CollegePerson implements Comparable<CollegePerson> {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    private void setLastName(String lastName) {
+            this.lastName = lastName;
     }
 
     public int getId() {

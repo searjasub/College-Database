@@ -5,6 +5,7 @@ import edu.neumont.lopez.database.view.UserInteraction;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CollegeDatabase {
@@ -14,13 +15,16 @@ public class CollegeDatabase {
     private int counter = 0;
 
     public void start() throws IOException {
+
         preFillDatabase();
+
         boolean keepAdding = true;
         while (keepAdding) {
             int selection = userInteraction.firstMenu();
             switch (selection) {
                 case 0:
                     addCollegePerson();
+                    sort();
                     break;
                 case 1:
                     removeCollagePerson();
@@ -41,9 +45,7 @@ public class CollegeDatabase {
         int selection = userInteraction.viewMenu();
         switch (selection) {
             case 0:
-                userInteraction.printDatabase(database);
                 sort();
-                System.out.println("Sorted???");
                 userInteraction.printDatabase(database);
                 break;
             case 1:
@@ -56,6 +58,7 @@ public class CollegeDatabase {
                 userInteraction.println("\n");
                 break;
             case 2:
+                //TODO COMPARE STUDENTS BY THEIR GPA?
                 sort();
                 for (CollegePerson s : database) {
                     if (s instanceof FacultyMember) {
@@ -79,7 +82,7 @@ public class CollegeDatabase {
     }
 
     private void sort() {
-        database.sort(CollegePerson::compareTo);
+        Collections.sort(database);
     }
 
     private void addCollegePerson() throws IOException {
@@ -125,25 +128,25 @@ public class CollegeDatabase {
 
 
     private void removeCollagePerson() throws IOException {
-        userInteraction.println("To remove someone from the database we'll recommend you know the ID, you can check it by printing the database ");
-        int id = userInteraction.removeCollegePerson();
+        userInteraction.println("To remove someone from the database use the ID, you can check someone's ID by printing the database ");
+        int id = userInteraction.removeCollegePerson(database.size());
         database.remove(id);
         for (int i = id; i < database.size(); i++) {
             database.get(i).setId(i);
         }
+        counter--;
     }
 
     private void preFillDatabase() {
-        Student student1 = new Student("Sear", "Apple", 0, 4, 10, 1994, 3.8);
-        Student student2 = new Student("Kellee", "Lost", 1, 26, 10, 1993, 3.9);
+        Student student1 = new Student("Sear", "Apple", 0, 4, 10, 1994, 4);
+        Student student2 = new Student("Kellee", "Lopez", 1, 26, 10, 1993, 3.9);
         StaffMember staffMember1 = new StaffMember("John", "Pin", 2, 16, 2, 92, SchoolDepartment.AFFAIRS);
         StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 3, 1, 12, 67, SchoolDepartment.EXECUTIVE);
-
-        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Zoom", 4, 5, 3, 87, DegreeProgram.CS);
+        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Cox", 4, 5, 3, 87, DegreeProgram.CS);
         FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 5, 17, 9, 80, DegreeProgram.WD);
-        //Student student3 = new Student("Pedro", "California",6,7,12,1998, 2.0);
+        Student student3 = new Student("Pedro", "California", 6, 7, 12, 1998, 2.0);
 
-        counter = 8;
+        counter = 7;
 
         database.add(student1);
         database.add(student2);
@@ -151,19 +154,25 @@ public class CollegeDatabase {
         database.add(staffMember2);
         database.add(facultyMember1);
         database.add(facultyMember2);
-        //database.add(student3);
+        database.add(student3);
 
 //        userInteraction.println(facultyMember1.speak());
 //        userInteraction.println(student1.speak());
 //        userInteraction.println(staffMember1.speak());
 
-//        student1.compareTo(student2);
+
 //        if (staffMember1.compareTo(facultyMember1) < 0) {
 //            System.out.println("staff is bigger");
 //        } else if (staffMember1.compareTo(facultyMember1) > 0) {
 //            System.out.println("faculty is bigger");
 //        } else {
 //            System.out.println("equals");
+//        }
+
+//        if (student1.compareToStudent(student2) > 1) {
+//            userInteraction.println(student1.getName() + " has better grades");
+//        } else {
+//            userInteraction.println(student2.getName() + " has better grades");
 //        }
     }
 

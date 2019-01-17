@@ -32,7 +32,22 @@ public class Student extends CollegePerson {
 
     @Override
     public int compareTo(CollegePerson o) {
-        Student other = (Student) o;
+        if (o instanceof Student) {
+            return Double.compare( ((Student)o).getGpa(), this.getGpa());
+        } else {
+            return 0;
+        }
+
+//            try {
+//                Student other = (Student) o;
+//                return Double.compare(this.getGpa(), other.getGpa());
+//
+//            } catch (ClassCastException ex) {
+//                return super.compareTo(o);
+//            }
+    }
+
+    public int compareToStudent(Student other) {
         return Double.compare(other.getGpa(), this.getGpa());
     }
 }
