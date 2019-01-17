@@ -171,7 +171,7 @@ public class UserInteraction {
     }
 
     private String[] departmentsMenu() {
-        String[] menuOptions = new String[5];
+        String[] menuOptions = new String[4];
         menuOptions[0] = SchoolDepartment.ADMISSIONS.getName();
         menuOptions[1] = SchoolDepartment.AFFAIRS.getName();
         menuOptions[2] = SchoolDepartment.EXECUTIVE.getName();

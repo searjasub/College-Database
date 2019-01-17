@@ -5,7 +5,6 @@ import edu.neumont.lopez.database.view.UserInteraction;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CollegeDatabase {
@@ -48,27 +47,27 @@ public class CollegeDatabase {
                 userInteraction.printDatabase(database);
                 break;
             case 1:
-
-
+                sort();
                 for (CollegePerson s : database) {
-                    if(s instanceof Student){
+                    if (s instanceof Student) {
                         userInteraction.print(s.toString());
                     }
                 }
                 userInteraction.println("\n");
                 break;
             case 2:
+                sort();
                 for (CollegePerson s : database) {
-                    if(s instanceof FacultyMember){
+                    if (s instanceof FacultyMember) {
                         userInteraction.print(s.toString());
                     }
                 }
-
                 userInteraction.println("\n");
                 break;
             case 3:
+                sort();
                 for (CollegePerson s : database) {
-                    if(s instanceof StaffMember){
+                    if (s instanceof StaffMember) {
                         userInteraction.print(s.toString());
                     }
                 }
@@ -79,8 +78,8 @@ public class CollegeDatabase {
         }
     }
 
-    private void sort(){
-        Collections.sort(database);
+    private void sort() {
+        database.sort(CollegePerson::compareTo);
     }
 
     private void addCollegePerson() throws IOException {
@@ -135,15 +134,16 @@ public class CollegeDatabase {
     }
 
     private void preFillDatabase() {
-        Student student1 = new Student("Sear", "Apple", 0, 4, 10, 1994, 4.0);
+        Student student1 = new Student("Sear", "Apple", 0, 4, 10, 1994, 3.8);
         Student student2 = new Student("Kellee", "Lost", 1, 26, 10, 1993, 3.9);
-
         StaffMember staffMember1 = new StaffMember("John", "Pin", 2, 16, 2, 92, SchoolDepartment.AFFAIRS);
         StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 3, 1, 12, 67, SchoolDepartment.EXECUTIVE);
 
         FacultyMember facultyMember1 = new FacultyMember("Ryan", "Zoom", 4, 5, 3, 87, DegreeProgram.CS);
         FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 5, 17, 9, 80, DegreeProgram.WD);
-        counter = 7;
+        //Student student3 = new Student("Pedro", "California",6,7,12,1998, 2.0);
+
+        counter = 8;
 
         database.add(student1);
         database.add(student2);
@@ -151,20 +151,20 @@ public class CollegeDatabase {
         database.add(staffMember2);
         database.add(facultyMember1);
         database.add(facultyMember2);
-
+        //database.add(student3);
 
 //        userInteraction.println(facultyMember1.speak());
 //        userInteraction.println(student1.speak());
 //        userInteraction.println(staffMember1.speak());
 
-        student1.compareTo(student2);
-        if (staffMember1.compareTo(facultyMember1) < 0) {
-            System.out.println("staff is bigger");
-        } else if(staffMember1.compareTo(facultyMember1) > 0){
-            System.out.println("faculty is bigger");
-        } else{
-            System.out.println("equals");
-        }
+//        student1.compareTo(student2);
+//        if (staffMember1.compareTo(facultyMember1) < 0) {
+//            System.out.println("staff is bigger");
+//        } else if (staffMember1.compareTo(facultyMember1) > 0) {
+//            System.out.println("faculty is bigger");
+//        } else {
+//            System.out.println("equals");
+//        }
     }
 
 }

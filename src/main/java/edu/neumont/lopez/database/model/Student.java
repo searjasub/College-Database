@@ -33,6 +33,6 @@ public class Student extends CollegePerson {
     @Override
     public int compareTo(CollegePerson o) {
         Student other = (Student) o;
-        return Double.compare(this.getGpa(), other.getGpa());
+        return Double.compare(other.getGpa(), this.getGpa());
     }
 }
