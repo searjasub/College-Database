@@ -46,8 +46,4 @@ public class Student extends CollegePerson {
 //                return super.compareTo(o);
 //            }
     }
-
-    public int compareToStudent(Student other) {
-        return Double.compare(other.getGpa(), this.getGpa());
-    }
 }

@@ -27,7 +27,7 @@ public class CollegeDatabase {
                     sort();
                     break;
                 case 1:
-                    removeCollagePerson();
+                    removeCollegePerson();
                     break;
                 case 2:
                     viewDatabase();
@@ -58,7 +58,6 @@ public class CollegeDatabase {
                 userInteraction.println("\n");
                 break;
             case 2:
-                //TODO COMPARE STUDENTS BY THEIR GPA?
                 sort();
                 for (CollegePerson s : database) {
                     if (s instanceof FacultyMember) {
@@ -127,7 +126,7 @@ public class CollegeDatabase {
     }
 
 
-    private void removeCollagePerson() throws IOException {
+    private void removeCollegePerson() throws IOException {
         userInteraction.println("To remove someone from the database use the ID, you can check someone's ID by printing the database ");
         int id = userInteraction.removeCollegePerson(database.size());
         database.remove(id);
@@ -169,11 +168,6 @@ public class CollegeDatabase {
 //            System.out.println("equals");
 //        }
 
-//        if (student1.compareToStudent(student2) > 1) {
-//            userInteraction.println(student1.getName() + " has better grades");
-//        } else {
-//            userInteraction.println(student2.getName() + " has better grades");
-//        }
     }
 
 }
