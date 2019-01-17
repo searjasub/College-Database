@@ -7,6 +7,7 @@ import interfaces.ConsoleUI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserInteraction {
 
@@ -179,7 +180,7 @@ public class UserInteraction {
         return menuOptions;
     }
 
-    public void printDatabase(ArrayList<CollegePerson> database) {
+    public void printDatabase(List<CollegePerson> database) {
         for (CollegePerson collegePerson: database) {
             print(collegePerson.toString());
         }

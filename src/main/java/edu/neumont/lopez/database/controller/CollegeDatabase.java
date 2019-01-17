@@ -5,10 +5,12 @@ import edu.neumont.lopez.database.view.UserInteraction;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CollegeDatabase {
 
-    private ArrayList<CollegePerson> database = new ArrayList<>();
+    private List<CollegePerson> database = new ArrayList<>();
     private UserInteraction userInteraction = new UserInteraction();
     private int counter = 0;
 
@@ -41,8 +43,13 @@ public class CollegeDatabase {
         switch (selection) {
             case 0:
                 userInteraction.printDatabase(database);
+                sort();
+                System.out.println("Sorted???");
+                userInteraction.printDatabase(database);
                 break;
             case 1:
+
+
                 for (CollegePerson s : database) {
                     if(s instanceof Student){
                         userInteraction.print(s.toString());
@@ -56,6 +63,7 @@ public class CollegeDatabase {
                         userInteraction.print(s.toString());
                     }
                 }
+
                 userInteraction.println("\n");
                 break;
             case 3:
@@ -69,7 +77,10 @@ public class CollegeDatabase {
             default:
                 break;
         }
+    }
 
+    private void sort(){
+        Collections.sort(database);
     }
 
     private void addCollegePerson() throws IOException {
@@ -124,16 +135,15 @@ public class CollegeDatabase {
     }
 
     private void preFillDatabase() {
-        Student student1 = new Student("Sear", "Lopez", 0, 4, 10, 1994, 4.0);
-        Student student2 = new Student("Kellee", "Lopez", 1, 26, 10, 1993, 3.9);
+        Student student1 = new Student("Sear", "Apple", 0, 4, 10, 1994, 4.0);
+        Student student2 = new Student("Kellee", "Lost", 1, 26, 10, 1993, 3.9);
 
-        StaffMember staffMember1 = new StaffMember("John", "P", 2, 16, 2, 92, SchoolDepartment.AFFAIRS);
+        StaffMember staffMember1 = new StaffMember("John", "Pin", 2, 16, 2, 92, SchoolDepartment.AFFAIRS);
         StaffMember staffMember2 = new StaffMember("Lorem", "Ipsum", 3, 1, 12, 67, SchoolDepartment.EXECUTIVE);
 
-        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Pox", 4, 5, 3, 87, DegreeProgram.CS);
+        FacultyMember facultyMember1 = new FacultyMember("Ryan", "Zoom", 4, 5, 3, 87, DegreeProgram.CS);
         FacultyMember facultyMember2 = new FacultyMember("Tom", "Beatty", 5, 17, 9, 80, DegreeProgram.WD);
-
-        counter = 6;
+        counter = 7;
 
         database.add(student1);
         database.add(student2);
