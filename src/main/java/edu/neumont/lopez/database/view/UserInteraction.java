@@ -209,4 +209,12 @@ public class UserInteraction {
     public int removeCollegePerson(int maxValue) throws IOException {
         return ConsoleUI.promptForInt("Enter the id", 0, maxValue);
     }
+
+    public int keepGoing() throws IOException {
+        String[] menuOption = new String[2];
+        menuOption[0] = "Yes";
+        menuOption[1] = "No";
+
+        return ConsoleUI.promptForMenuSelection(menuOption, "To remove someone from the database use the ID, you can check someone's ID by printing the database.\nDo you know the ID number?");
+    }
 }
