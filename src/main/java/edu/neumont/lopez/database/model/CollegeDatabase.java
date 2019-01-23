@@ -4,14 +4,27 @@ import edu.neumont.lopez.database.controller.helper.FacultyMemberList;
 import edu.neumont.lopez.database.controller.helper.StaffMemberList;
 import edu.neumont.lopez.database.controller.helper.StudentList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CollegeDatabase {
 
+
+    private List<CollegePerson> bigList = new ArrayList<>();
     private StudentList students = new StudentList();
     private StaffMemberList staff = new StaffMemberList();
     private FacultyMemberList faculty = new FacultyMemberList();
 
     public CollegeDatabase(){
 
+    }
+
+    public List<CollegePerson> getBigList() {
+        return bigList;
+    }
+
+    public void add(CollegePerson someone){
+        bigList.add(someone);
     }
 
     public StudentList getStudents() {

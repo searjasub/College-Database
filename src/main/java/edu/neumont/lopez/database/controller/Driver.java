@@ -13,7 +13,8 @@ import java.util.List;
 
 public class Driver {
 
-    private List<CollegePerson> database = new ArrayList<>();
+    //private List<CollegePerson> database = new ArrayList<>();
+    private CollegeDatabase database = new CollegeDatabase();
     private UserInteraction userInteraction = new UserInteraction();
     private int counter = 0;
 
@@ -40,7 +41,6 @@ public class Driver {
                     break;
                 case 4:
 
-
                     break;
                 case 5:
                     StudentList students = loadStudents("students.txt");
@@ -55,12 +55,12 @@ public class Driver {
         }
     }
 
-    private void saveStaff(StaffMemberList staff, String filePath){
+    private void saveStaff(StaffMemberList staff, String filePath) {
         String serializedStaff = staff.serializeStaffMembers();
         saveToFile(filePath, serializedStaff);
     }
 
-    private void saveFaculty(FacultyMemberList faculty, String filePath){
+    private void saveFaculty(FacultyMemberList faculty, String filePath) {
         String serializedFaculty = faculty.serializeFacultyMembers();
         saveToFile(filePath, serializedFaculty);
     }
@@ -134,11 +134,11 @@ public class Driver {
         switch (selection) {
             case 0:
                 sort();
-                userInteraction.printDatabase(database);
+                userInteraction.printDatabase(database.getBigList());
                 break;
             case 1:
                 sort();
-                for (CollegePerson s : database) {
+                for (CollegePerson s : database.getBigList()) {
                     if (s instanceof Student) {
                         userInteraction.print(s.toString());
                     }
@@ -147,7 +147,7 @@ public class Driver {
                 break;
             case 2:
                 sort();
-                for (CollegePerson s : database) {
+                for (CollegePerson s : database.getBigList()) {
                     if (s instanceof FacultyMember) {
                         userInteraction.print(s.toString());
                     }
@@ -156,7 +156,7 @@ public class Driver {
                 break;
             case 3:
                 sort();
-                for (CollegePerson s : database) {
+                for (CollegePerson s : database.getBigList()) {
                     if (s instanceof StaffMember) {
                         userInteraction.print(s.toString());
                     }
@@ -169,7 +169,7 @@ public class Driver {
     }
 
     private void sort() {
-        Collections.sort(database);
+        Collections.sort(database.getBigList());
     }
 
     private void addCollegePerson() throws IOException {
@@ -225,13 +225,21 @@ public class Driver {
     }
 
     private void removeCollegePerson() throws IOException {
-        userInteraction.println("To remove someone from the database use the ID, you can check someone's ID by printing the database ");
-        int id = userInteraction.removeCollegePerson(database.size());
-        database.remove(id);
-        for (int i = id; i < database.size(); i++) {
-            database.get(i).setId(i);
+        int selection = userInteraction.keepGoing();
+        switch (selection) {
+            case 0:
+                int id = userInteraction.removeCollegePerson(database.getBigList().size());
+                database.getBigList().remove(id);
+                for (int i = id; i < database.getBigList().size(); i++) {
+                    database.getBigList().get(i).setId(i);
+                }
+                counter--;
+                break;
+            case 1:
+                break;
+            default:
+                break;
         }
-        counter--;
     }
 
     private void preFillDatabase() {
