@@ -1,13 +1,14 @@
 package edu.neumont.lopez.database;
 
-import edu.neumont.lopez.database.controller.CollegeDatabase;
+import edu.neumont.lopez.database.controller.Driver;
 
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        CollegeDatabase collegeDatabase = new CollegeDatabase();
-        collegeDatabase.start();
+        Driver driver = new Driver();
+        driver.start();
+
     }
 }

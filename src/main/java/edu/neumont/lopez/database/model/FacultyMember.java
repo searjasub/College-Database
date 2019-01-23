@@ -4,6 +4,9 @@ public class FacultyMember extends CollegePerson {
 
     private DegreeProgram degreeProgram;
 
+    public FacultyMember() {
+    }
+
     public FacultyMember(String name, String lastName, int id, int day, int month, int year, DegreeProgram program) {
         super(name, lastName, id, day, month, year);
         this.setDegreeProgram(program);
@@ -30,5 +33,16 @@ public class FacultyMember extends CollegePerson {
         return super.toString() + "\nDegree Program: " + getDegreeProgram();
     }
 
+    @Override
+    public String toSaveFormat() {
+        return super.toSaveFormat() + "," + this.getDegreeProgram().getName();
+    }
+
+    @Override
+    public void fromLoadFormat(String raw) {
+        String[] parts = raw.split(",");
+        super.fromLoadFormat(raw);
+        this.setDegreeProgram(DegreeProgram.valueOf(parts[6].trim()));
+    }
 
 }

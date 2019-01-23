@@ -1,10 +1,8 @@
 package edu.neumont.lopez.database.model;
 
-public class CollegePerson implements Comparable<CollegePerson> {
+public class CollegePerson implements Comparable<CollegePerson>, Savable {
 
     private String name;
-
-
     private String lastName;
     private int day, month, year, id;
 
@@ -36,7 +34,7 @@ public class CollegePerson implements Comparable<CollegePerson> {
     }
 
     private void setLastName(String lastName) {
-            this.lastName = lastName;
+        this.lastName = lastName;
     }
 
     public int getId() {
@@ -101,6 +99,21 @@ public class CollegePerson implements Comparable<CollegePerson> {
     @Override
     public int compareTo(CollegePerson o) {
         return this.getLastName().compareTo(o.getLastName());
+    }
 
+    @Override
+    public String toSaveFormat() {
+        return (this.getId() + "," + this.getName() + "," + this.getLastName() + "," + this.getMonth() + "," + this.getDay() + "," + this.getYear());
+    }
+
+    @Override
+    public void fromLoadFormat(String raw) {
+        String[] parts = raw.split(",");
+        this.setId(Integer.parseInt(parts[0].trim()));
+        this.setName(parts[1].trim());
+        this.setLastName(parts[2].trim());
+        this.setMonth(Integer.parseInt(parts[3].trim()));
+        this.setDay(Integer.parseInt(parts[4].trim()));
+        this.setYear(Integer.parseInt(parts[5].trim()));
     }
 }

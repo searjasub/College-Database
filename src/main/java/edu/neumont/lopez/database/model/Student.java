@@ -4,6 +4,10 @@ public class Student extends CollegePerson {
 
     private double gpa;
 
+    public Student() {
+
+    }
+
     public Student(String name, String lastName, int id, int day, int month, int year, double gpa) {
         super(name, lastName, id, day, month, year);
         this.setGpa(gpa);
@@ -33,11 +37,10 @@ public class Student extends CollegePerson {
     @Override
     public int compareTo(CollegePerson o) {
         if (o instanceof Student) {
-            return Double.compare( ((Student)o).getGpa(), this.getGpa());
+            return Double.compare(((Student) o).getGpa(), this.getGpa());
         } else {
             return 0;
         }
-
 //            try {
 //                Student other = (Student) o;
 //                return Double.compare(this.getGpa(), other.getGpa());
@@ -45,5 +48,17 @@ public class Student extends CollegePerson {
 //            } catch (ClassCastException ex) {
 //                return super.compareTo(o);
 //            }
+    }
+
+    @Override
+    public String toSaveFormat() {
+        return super.toSaveFormat() + "," + this.getGpa();
+    }
+
+    @Override
+    public void fromLoadFormat(String raw) {
+        String[] parts = raw.split(",");
+        super.fromLoadFormat(raw);
+        this.setGpa(Double.parseDouble(parts[6].trim()));
     }
 }

@@ -21,11 +21,13 @@ public class UserInteraction {
     }
 
     private String[] fillFirstMenu() {
-        String[] menuOptions = new String[4];
+        String[] menuOptions = new String[6];
         menuOptions[0] = "Add College Person to database";
         menuOptions[1] = "Remove College Person from database";
         menuOptions[2] = "View current database";
-        menuOptions[3] = "Exit";
+        menuOptions[3] = "Save";
+        menuOptions[4] = "Load";
+        menuOptions[5] = "Exit";
         return menuOptions;
     }
 
