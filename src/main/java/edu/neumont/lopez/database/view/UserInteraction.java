@@ -13,7 +13,7 @@ public class UserInteraction {
     public int firstMenu() {
         String[] menuOptions = fillFirstMenu();
         try {
-            return ConsoleUI.promptForMenuSelection(menuOptions, "What would you like to do?");
+            return ConsoleUI.promptForMenuSelection(menuOptions, "\nWhat would you like to do?");
         } catch (IOException e) {
             System.out.println("Incorrect input");
         }
@@ -34,7 +34,7 @@ public class UserInteraction {
     public int secondMenu() {
         String[] menuOptions = fillSecondMenu();
         try {
-            return ConsoleUI.promptForMenuSelection(menuOptions, "Select the number for the type of College Person you want to add");
+            return ConsoleUI.promptForMenuSelection(menuOptions, "\nSelect the number for the type of College Person you want to add");
         } catch (IOException e) {
             System.out.println("Incorrect input");
         }
@@ -52,7 +52,7 @@ public class UserInteraction {
 
     public String getName() {
         try {
-            return ConsoleUI.promptForInput("What is the name?", false);
+            return ConsoleUI.promptForInput("\nEnter name.", false);
         } catch (IOException e) {
             System.out.println("Incorrect input");
         }
@@ -61,7 +61,7 @@ public class UserInteraction {
 
     public String getLastName() {
         try {
-            return ConsoleUI.promptForInput("Enter the last name.", false);
+            return ConsoleUI.promptForInput("\nEnter last name.", false);
         } catch (IOException e) {
             System.out.println("Incorrect Input");
         }
@@ -69,12 +69,12 @@ public class UserInteraction {
     }
 
     public int getMonth() throws IOException {
-        return ConsoleUI.promptForInt("Enter the number of the month", 1, 12);
+        return ConsoleUI.promptForInt("\nEnter the number of the month", 1, 12);
     }
 
     public int getDay() throws IOException {
 
-        return ConsoleUI.promptForInt("Enter day", 1, 31);
+        return ConsoleUI.promptForInt("\nEnter day", 1, 31);
 
 //        int day = -1;
 //        boolean isValid = false;
@@ -102,7 +102,7 @@ public class UserInteraction {
 
     public int getYear() {
         try {
-            return ConsoleUI.promptForInt("Enter the year", 0, 2018);
+            return ConsoleUI.promptForInt("\nEnter the year", 0, 2018);
         } catch (IOException e) {
             System.out.println("Invalid input");
         }
@@ -112,7 +112,7 @@ public class UserInteraction {
 
     public double getGpa() {
         try {
-            return ConsoleUI.promptForDouble("Enter GPA", 0, 4);
+            return ConsoleUI.promptForDouble("\nEnter GPA", 0, 4);
         } catch (IOException e) {
             System.out.println("Invalid input");
         }
@@ -123,7 +123,7 @@ public class UserInteraction {
     public DegreeProgram getDegree() {
         String[] menuOptions = degreesMenu();
         try {
-            int selection = ConsoleUI.promptForMenuSelection(menuOptions, "What Degree?");
+            int selection = ConsoleUI.promptForMenuSelection(menuOptions, "\nWhat Degree?");
             if (selection == 0) {
                 return DegreeProgram.CS;
             } else if (selection == 1) {
@@ -155,7 +155,7 @@ public class UserInteraction {
     public SchoolDepartment getSchoolDepartment() {
         String[] menuOptions = departmentsMenu();
         try {
-            int selection = ConsoleUI.promptForMenuSelection(menuOptions, "What is the School Department");
+            int selection = ConsoleUI.promptForMenuSelection(menuOptions, "\nWhat is the School Department");
             if (selection == 0) {
                 return SchoolDepartment.ADMISSIONS;
             } else if (selection == 1) {
@@ -203,11 +203,11 @@ public class UserInteraction {
         menuOptions[2] = "View Faculty Members";
         menuOptions[3] = "View Staff Members";
 
-        return ConsoleUI.promptForMenuSelection(menuOptions, "Choose your desire view");
+        return ConsoleUI.promptForMenuSelection(menuOptions, "\nChoose your desire view");
     }
 
     public int removeCollegePerson(int maxValue) throws IOException {
-        return ConsoleUI.promptForInt("Enter the id", 0, maxValue);
+        return ConsoleUI.promptForInt("\nEnter the id", 0, maxValue);
     }
 
     public int keepGoing() throws IOException {
@@ -217,4 +217,5 @@ public class UserInteraction {
 
         return ConsoleUI.promptForMenuSelection(menuOption, "To remove someone from the database use the ID, you can check someone's ID by printing the database.\nDo you know the ID number?");
     }
+
 }

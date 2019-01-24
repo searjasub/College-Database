@@ -5,11 +5,10 @@ public class Student extends CollegePerson {
     private double gpa;
 
     public Student() {
-
     }
 
-    public Student(String name, String lastName, int id, int day, int month, int year, double gpa) {
-        super(name, lastName, id, day, month, year);
+    public Student(String name, String lastName, int day, int month, int year, double gpa) {
+        super(name, lastName, day, month, year);
         this.setGpa(gpa);
     }
 
@@ -31,7 +30,7 @@ public class Student extends CollegePerson {
 
     @Override
     public String toString() {
-        return super.toString() + "\nGPA: " + getGpa();
+        return super.toString() + "\nGPA: " + getGpa() + "\n";
     }
 
     @Override
@@ -57,8 +56,8 @@ public class Student extends CollegePerson {
 
     @Override
     public void fromLoadFormat(String raw) {
-        String[] parts = raw.split(",");
         super.fromLoadFormat(raw);
-        this.setGpa(Double.parseDouble(parts[6].trim()));
+        String[] parts = raw.split(",");
+        this.setGpa(Double.parseDouble(parts[5].trim()));
     }
 }

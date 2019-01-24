@@ -7,8 +7,8 @@ public class FacultyMember extends CollegePerson {
     public FacultyMember() {
     }
 
-    public FacultyMember(String name, String lastName, int id, int day, int month, int year, DegreeProgram program) {
-        super(name, lastName, id, day, month, year);
+    public FacultyMember(String name, String lastName, int day, int month, int year, DegreeProgram program) {
+        super(name, lastName, day, month, year);
         this.setDegreeProgram(program);
     }
 
@@ -30,7 +30,7 @@ public class FacultyMember extends CollegePerson {
 
     @Override
     public String toString() {
-        return super.toString() + "\nDegree Program: " + getDegreeProgram();
+        return super.toString() + "\nDegree Program: " + getDegreeProgram() + "\n";
     }
 
     @Override
@@ -40,9 +40,20 @@ public class FacultyMember extends CollegePerson {
 
     @Override
     public void fromLoadFormat(String raw) {
-        String[] parts = raw.split(",");
         super.fromLoadFormat(raw);
-        this.setDegreeProgram(DegreeProgram.valueOf(parts[6].trim()));
+        String[] parts = raw.split(",");
+        if (parts[5].equals(DegreeProgram.CS.getName())) {
+            this.setDegreeProgram(DegreeProgram.CS);
+        } else if (parts[5].equals(DegreeProgram.WD.getName())){
+            this.setDegreeProgram(DegreeProgram.WD);
+        } else if (parts[5].equals(DegreeProgram.TM.getName())){
+            this.setDegreeProgram(DegreeProgram.TM);
+        }else if (parts[5].equals(DegreeProgram.IS.getName())){
+            this.setDegreeProgram(DegreeProgram.IS);
+        } else if (parts[5].equals(DegreeProgram.GD.getName())){
+            this.setDegreeProgram(DegreeProgram.GD);
+        }
+
     }
 
 }

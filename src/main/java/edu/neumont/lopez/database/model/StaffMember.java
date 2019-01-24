@@ -6,8 +6,8 @@ public class StaffMember extends CollegePerson {
 
     public StaffMember(){}
 
-    public StaffMember(String name, String lastName, int id, int day, int month, int year, SchoolDepartment department) {
-        super(name, lastName, id, day, month, year);
+    public StaffMember(String name, String lastName, int day, int month, int year, SchoolDepartment department) {
+        super(name, lastName, day, month, year);
         this.setDepartment(department);
     }
 
@@ -29,7 +29,7 @@ public class StaffMember extends CollegePerson {
 
     @Override
     public String toString() {
-        return super.toString() + "\nSchool Department: " + getDepartment();
+        return super.toString() + "\nSchool Department: " + getDepartment() + "\n";
     }
 
     @Override
@@ -39,8 +39,16 @@ public class StaffMember extends CollegePerson {
 
     @Override
     public void fromLoadFormat(String raw) {
-        String[] parts = raw.split(",");
         super.fromLoadFormat(raw);
-        this.setDepartment(SchoolDepartment.valueOf(parts[6].trim()));
+        String[] parts = raw.split(",");
+        if(parts[5].trim().equals(SchoolDepartment.AFFAIRS.getName())){
+            this.setDepartment(SchoolDepartment.AFFAIRS);
+        } else if(parts[5].trim().equals(SchoolDepartment.EXECUTIVE.getName())){
+            this.setDepartment(SchoolDepartment.EXECUTIVE);
+        }else if(parts[5].trim().equals(SchoolDepartment.AFFAIRS.getName())){
+            this.setDepartment(SchoolDepartment.AFFAIRS);
+        }else if(parts[5].trim().equals(SchoolDepartment.ADMISSIONS.getName())){
+            this.setDepartment(SchoolDepartment.ADMISSIONS);
+        }
     }
 }

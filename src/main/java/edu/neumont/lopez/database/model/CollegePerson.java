@@ -4,15 +4,15 @@ public class CollegePerson implements Comparable<CollegePerson>, Savable {
 
     private String name;
     private String lastName;
-    private int day, month, year, id;
+    private int day, month, year;
 
     public CollegePerson() {
     }
 
-    public CollegePerson(String name, String lastName, int id, int day, int month, int year) {
+    public CollegePerson(String name, String lastName, int day, int month, int year) {
         this.setName(name);
         this.setLastName(lastName);
-        this.setId(id);
+
         this.setDay(day);
         this.setMonth(month);
         this.setYear(year);
@@ -35,14 +35,6 @@ public class CollegePerson implements Comparable<CollegePerson>, Savable {
 
     private void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getDay() {
@@ -83,12 +75,11 @@ public class CollegePerson implements Comparable<CollegePerson>, Savable {
     }
 
     public String toString() {
-        return "\n\nName: " + getName() +
+        return "\nName: " + getName() +
                 "\nLast name: " + getLastName() +
                 "\nDOB: " + getDay() +
                 "/" + getMonth() +
-                "/" + getYear() +
-                "\nID: " + getId();
+                "/" + getYear() ;
     }
 
     public boolean equals(Object obj) {
@@ -103,17 +94,16 @@ public class CollegePerson implements Comparable<CollegePerson>, Savable {
 
     @Override
     public String toSaveFormat() {
-        return (this.getId() + "," + this.getName() + "," + this.getLastName() + "," + this.getMonth() + "," + this.getDay() + "," + this.getYear());
+        return (this.getName() + "," + this.getLastName() + "," + this.getMonth() + "," + this.getDay() + "," + this.getYear());
     }
 
     @Override
     public void fromLoadFormat(String raw) {
         String[] parts = raw.split(",");
-        this.setId(Integer.parseInt(parts[0].trim()));
-        this.setName(parts[1].trim());
-        this.setLastName(parts[2].trim());
-        this.setMonth(Integer.parseInt(parts[3].trim()));
-        this.setDay(Integer.parseInt(parts[4].trim()));
-        this.setYear(Integer.parseInt(parts[5].trim()));
+        this.setName(parts[0].trim());
+        this.setLastName(parts[1].trim());
+        this.setMonth(Integer.parseInt(parts[2].trim()));
+        this.setDay(Integer.parseInt(parts[3].trim()));
+        this.setYear(Integer.parseInt(parts[4].trim()));
     }
 }
