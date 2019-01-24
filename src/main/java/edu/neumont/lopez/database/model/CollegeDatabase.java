@@ -23,29 +23,16 @@ public class CollegeDatabase {
         return bigList;
     }
 
-    public void setBigList(List<CollegePerson> bigList) {
-        this.bigList = bigList;
-    }
-
     public StudentList getStudents() {
         return students;
     }
-
 
     public StaffMemberList getStaff() {
         return staff;
     }
 
-    public void setStaff(StaffMemberList staff) {
-        this.staff = staff;
-    }
-
     public FacultyMemberList getFaculty() {
         return faculty;
-    }
-
-    public void setFaculty(FacultyMemberList faculty) {
-        this.faculty = faculty;
     }
 
     public String getStudentsList() {
@@ -98,10 +85,6 @@ public class CollegeDatabase {
     public void addFaculty(FacultyMember facultyMember) {
         this.faculty.add(facultyMember);
         this.bigList.add(facultyMember);
-    }
-
-    public String serialize() {
-        return "";
     }
 
     private void saveStaff(StaffMemberList staff) throws FileNotFoundException {

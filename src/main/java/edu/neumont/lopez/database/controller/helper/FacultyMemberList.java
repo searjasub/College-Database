@@ -10,7 +10,7 @@ public class FacultyMemberList extends ArrayList<FacultyMember> {
     public String serializeFacultyMembers() {
         StringBuilder serializedFacultyMembers = new StringBuilder();
         for (FacultyMember facultyMember : this) {
-            serializedFacultyMembers.append(facultyMember.toSaveFormat());
+            serializedFacultyMembers.append(facultyMember.toSaveFormat()).append("\r\n");
         }
         return serializedFacultyMembers.toString();
     }

@@ -1,4 +1,3 @@
-Sear,Lopez,10,4,1994,3.0
-Jeff,Rehm,8,28,2000,4.0
 Jorge,Pineda,10,10,1994,4.0
 Nathan,Gift,1,1,1,3.0
+Second,Student,1,1,1,1.0

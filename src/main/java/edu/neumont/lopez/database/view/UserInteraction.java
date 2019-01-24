@@ -73,31 +73,7 @@ public class UserInteraction {
     }
 
     public int getDay() throws IOException {
-
         return ConsoleUI.promptForInt("\nEnter day", 1, 31);
-
-//        int day = -1;
-//        boolean isValid = false;
-//        while (!isValid) {
-//            day = ConsoleUI.promptForInt("Enter day", 1, 31);
-//            if (getMonth() == 4 || getMonth() == 6 || getMonth() == 9 || getMonth() == 11) {
-//                if (day > 30) {
-//                    System.out.println("That month does not have " + day + " days. Please try again");
-//                    break;
-//                } else {
-//                    isValid = true;
-//                }
-//            } else if (getMonth() == 2) {
-//                if (day > 28) {
-//                    System.out.println("February does not have " + day + " days. Please try again.");
-//                } else {
-//                    isValid = true;
-//                }
-//            } else {
-//
-//            }
-//        }
-//        return day;
     }
 
     public int getYear() {
@@ -181,13 +157,6 @@ public class UserInteraction {
         return menuOptions;
     }
 
-    public void printDatabase(List<CollegePerson> database) {
-        for (CollegePerson collegePerson : database) {
-            print(collegePerson.toString());
-        }
-        System.out.println("\n");
-    }
-
     public void println(String message) {
         System.out.println(message);
     }
@@ -206,16 +175,14 @@ public class UserInteraction {
         return ConsoleUI.promptForMenuSelection(menuOptions, "\nChoose your desire view");
     }
 
-    public int removeCollegePerson(int maxValue) throws IOException {
-        return ConsoleUI.promptForInt("\nEnter the id", 0, maxValue);
-    }
+    public CollegePerson selectPerson(List<CollegePerson> persons) throws IOException {
+        Object[] list = persons.toArray();
+        String[] options = new String[list.length];
+        for (int i = 0; i < options.length; i++) {
+            options[i] = persons.get(i).getName();
+        }
+        return (CollegePerson)list[ConsoleUI.promptForMenuSelection(options,"Who you want to delete?")];
 
-    public int keepGoing() throws IOException {
-        String[] menuOption = new String[2];
-        menuOption[0] = "Yes";
-        menuOption[1] = "No";
-
-        return ConsoleUI.promptForMenuSelection(menuOption, "To remove someone from the database use the ID, you can check someone's ID by printing the database.\nDo you know the ID number?");
     }
 
 }

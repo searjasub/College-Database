@@ -10,7 +10,7 @@ public class StaffMemberList extends ArrayList<StaffMember> {
     public String serializeStaffMembers() {
         StringBuilder serializedStaffMembers = new StringBuilder();
         for (StaffMember staffMember : this) {
-            serializedStaffMembers.append(staffMember.toSaveFormat());
+            serializedStaffMembers.append(staffMember.toSaveFormat()).append("\r\n");
         }
         return serializedStaffMembers.toString();
     }

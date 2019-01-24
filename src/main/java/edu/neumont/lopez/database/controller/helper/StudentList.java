@@ -8,11 +8,11 @@ import java.util.List;
 public class StudentList extends ArrayList<Student> {
 
     public String serializeStudents() {
-        String serializedStudents = "";
+        StringBuilder serializedStudents = new StringBuilder();
         for (Student s : this) {
-            serializedStudents += s.toSaveFormat() + "\r\n";
+            serializedStudents.append(s.toSaveFormat()).append("\r\n");
         }
-        return serializedStudents;
+        return serializedStudents.toString();
     }
 
     public void deserializeStudents(List<String> rawData) {

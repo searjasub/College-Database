@@ -127,16 +127,16 @@ public class Driver {
     }
 
     private void removeCollegePerson() throws IOException {
-        //TODO FIX THE REMOVE TO SHOW THE LIST BY THEIR INDEX
-        int selection = userInteraction.keepGoing();
-        switch (selection) {
-            case 0:
-                int index = userInteraction.removeCollegePerson(database.getBigList().size());
-                break;
-            case 1:
-                break;
-            default:
-                break;
+        CollegePerson selected = userInteraction.selectPerson(database.getBigList());
+        if (selected instanceof Student){
+            database.getStudents().remove(selected);
+            database.getBigList().remove(selected);
+        } else if(selected instanceof FacultyMember){
+            database.getFaculty().remove(selected);
+            database.getBigList().remove(selected);
+        } else if(selected instanceof StaffMember){
+            database.getStaff().remove(selected);
+            database.getBigList().remove(selected);
         }
     }
 }
