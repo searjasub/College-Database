@@ -52,7 +52,7 @@ public class UserInteraction {
 
     public String getName() {
         try {
-            return ConsoleUI.promptForInput("\nEnter name.", false);
+            return ConsoleUI.promptForInput("\nEnter name.", false, false);
         } catch (IOException e) {
             System.out.println("Incorrect input");
         }
@@ -61,7 +61,7 @@ public class UserInteraction {
 
     public String getLastName() {
         try {
-            return ConsoleUI.promptForInput("\nEnter last name.", false);
+            return ConsoleUI.promptForInput("\nEnter last name.", false, false);
         } catch (IOException e) {
             System.out.println("Incorrect Input");
         }
