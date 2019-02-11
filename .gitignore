@@ -6,3 +6,5 @@ college-database/
 .idea/workspace.xml
 *.class
 *.class
+*.class
+*.xml
